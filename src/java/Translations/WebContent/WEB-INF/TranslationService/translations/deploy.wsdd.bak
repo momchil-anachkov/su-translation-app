@@ -1,0 +1,38 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from TranslationService WSDL service -->
+
+  <service name="Translation" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://translations"/>
+      <parameter name="wsdlServiceElement" value="TranslationService"/>
+      <parameter name="schemaQualified" value="http://translations"/>
+      <parameter name="wsdlServicePort" value="Translation"/>
+      <parameter name="className" value="translations.TranslationSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="Translation"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="detect" qname="operNS:detect" xmlns:operNS="http://translations" returnQName="retNS:detectReturn" xmlns:retNS="http://translations" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:text" xmlns:pns="http://translations" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="detectTranslate" qname="operNS:detectTranslate" xmlns:operNS="http://translations" returnQName="retNS:detectTranslateReturn" xmlns:retNS="http://translations" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:text" xmlns:pns="http://translations" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:targetLanguage" xmlns:pns="http://translations" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="singleTranslate" qname="operNS:singleTranslate" xmlns:operNS="http://translations" returnQName="retNS:singleTranslateReturn" xmlns:retNS="http://translations" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:text" xmlns:pns="http://translations" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:sourceLanguage" xmlns:pns="http://translations" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:targetLanguage" xmlns:pns="http://translations" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="singleTranslate detect detectTranslate"/>
+
+  </service>
+</deployment>

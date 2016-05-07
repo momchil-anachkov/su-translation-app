@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://translations" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://translations" xmlns:intf="http://translations" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://translations" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="detect">
+    <complexType>
+     <sequence>
+      <element name="text" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="detectResponse">
+    <complexType>
+     <sequence>
+      <element name="detectReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="detectTranslate">
+    <complexType>
+     <sequence>
+      <element name="text" type="xsd:string"/>
+      <element name="targetLanguage" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="detectTranslateResponse">
+    <complexType>
+     <sequence>
+      <element name="detectTranslateReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="singleTranslate">
+    <complexType>
+     <sequence>
+      <element name="text" type="xsd:string"/>
+      <element name="sourceLanguage" type="xsd:string"/>
+      <element name="targetLanguage" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="singleTranslateResponse">
+    <complexType>
+     <sequence>
+      <element name="singleTranslateReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="detectRequest">
+
+      <wsdl:part element="impl:detect" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="detectResponse">
+
+      <wsdl:part element="impl:detectResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="detectTranslateRequest">
+
+      <wsdl:part element="impl:detectTranslate" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="singleTranslateResponse">
+
+      <wsdl:part element="impl:singleTranslateResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="detectTranslateResponse">
+
+      <wsdl:part element="impl:detectTranslateResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="singleTranslateRequest">
+
+      <wsdl:part element="impl:singleTranslate" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="Translation">
+
+      <wsdl:operation name="detect">
+
+         <wsdl:input message="impl:detectRequest" name="detectRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:detectResponse" name="detectResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="detectTranslate">
+
+         <wsdl:input message="impl:detectTranslateRequest" name="detectTranslateRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:detectTranslateResponse" name="detectTranslateResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="singleTranslate">
+
+         <wsdl:input message="impl:singleTranslateRequest" name="singleTranslateRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:singleTranslateResponse" name="singleTranslateResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="TranslationSoapBinding" type="impl:Translation">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="detect">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="detectRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="detectResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="detectTranslate">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="detectTranslateRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="detectTranslateResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="singleTranslate">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="singleTranslateRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="singleTranslateResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="TranslationService">
+
+      <wsdl:port binding="impl:TranslationSoapBinding" name="Translation">
+
+         <wsdlsoap:address location="http://localhost:8080/Translation/services/Translation"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
