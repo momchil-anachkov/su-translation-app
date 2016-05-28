@@ -85,7 +85,7 @@
         }
         break;
       default:
-        throw 'Invalid Command';
+        throw new SyntaxError('Invalid Command');
         break;
     }
 

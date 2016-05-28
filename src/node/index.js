@@ -7,7 +7,7 @@
   const pr = require('./responsePrinter');
   const soap = require('soap');
   const rl = readline.createInterface(process.stdin, process.stdout);
-  const url = 'http://192.168.1.121:8080/Translation/services/Translation?wsdl';
+  const url = 'http://192.168.1.14:8080/Translation/services/Translation?wsdl';
 
   //TODO: Create client
   soap.createClient(url, function(err, client) {
@@ -26,12 +26,11 @@
         try {
           parsed = clp.parse(line);
           executor.execute(parsed);
-          //TODO: stuff
 
-          //rl.prompt();
+          rl.prompt();
         } catch (e) {
           console.log(e);
-          rl.prompt();
+          //rl.prompt();
         }
       }).on('close', () => {
         console.log('Have a great day!');
@@ -40,7 +39,6 @@
     }
   });
 
-//
 //  clp.parse('detect "this is a cat"');
 //  clp.parse('translate [eng] "this is a cat" [de]');
 //  clp.parse('multi [eng] "this is a cat" [de] [fr]');
